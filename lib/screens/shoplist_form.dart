@@ -70,7 +70,6 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   borderRadius: BorderRadius.circular(5.0),
                 ),
               ),
-              // TODO: Tambahkan variabel yang sesuai
               onChanged: (String? value) {
                 setState(() {
                   _price = int.parse(value!);
@@ -121,14 +120,12 @@ class _ShopFormPageState extends State<ShopFormPage> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     // Kirim ke Django dan tunggu respons
-                    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                     final response = await request.postJson(
-                        "http://<URL_APP_KAMU>/create-flutter/",
+                        "http://127.0.0.1:8000/create-flutter/",
                         jsonEncode(<String, String>{
                           'name': _name,
                           'price': _price.toString(),
                           'description': _description,
-                          // TODO: Sesuaikan field data sesuai dengan aplikasimu
                         }));
                     if (response['status'] == 'success') {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
